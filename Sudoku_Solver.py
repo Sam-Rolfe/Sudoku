@@ -19,7 +19,7 @@ Created on Thu Apr 26 17:23:35 2018
 # 1. Import libraries, file names, global Variables
 # 2. Sudoku Templates
 # 3. Sudoku solver
-# 4. Top Level Functions:
+# 4. Top Level Functions
 # 5. Solver Helpers
 # 6. Solver Performace 
 # 7. Run File
