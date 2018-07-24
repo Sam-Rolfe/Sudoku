@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr 26 17:23:35 2018
-
 @author: SamRolfe
 """
 
 
+## This program imports unsolved Sudoku boards and exports the solved boards
+##
+## To run: 
+## 1. Download "10000 Unsolved Boards.txt", available in "datasets"
+## 2. Set "input_data_file" equal to the file location of the downloaded file
+## 3. Set "output_data_file" equal to the file location of the file receiving
+##    the solved Sudoku boards
 
-## Imports unsolved sudoku boards. Boards separated by line breaks, numbers 
-## separated by commas. Exports solved boards as lists of comma separated 
-## integers
 
 
 
@@ -19,7 +21,7 @@ Created on Thu Apr 26 17:23:35 2018
 # 1. Import libraries, file names, global Variables
 # 2. Sudoku Templates
 # 3. Sudoku solver
-# 4. Top Level Functions
+# 4. Top Level Functions:
 # 5. Solver Helpers
 # 6. Solver Performace 
 # 7. Run File
@@ -35,23 +37,21 @@ Created on Thu Apr 26 17:23:35 2018
 
 from random import *
 import time
+import numpy as np
+
 
 start = time.time()
 
 
-input_data_file = <file_location>
-output_data_file = <file_location>
-
+input_data_file = <file location>
+output_data_file = <file location>
 
 
 ## Global Variables
+valid_inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 board_length = 81
 number_of_rows = 9
 number_of_columns = 9
-
-total_boards = len(unsolved_boards)
-valid_inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
 
 
 
@@ -120,6 +120,7 @@ solved_board =     [3, 4, 6, 1, 7, 9, 2, 5, 8,
 
 def sudoku_solver(input_data_file, output_data_file):
     unsolved_boards = import_data(input_data_file)
+    total_boards = len(unsolved_boards)
     solved_boards = []
     
     print("\nSolving ", total_boards, " boards...\n")
@@ -129,7 +130,7 @@ def sudoku_solver(input_data_file, output_data_file):
         print("Completed board number: ", board + 1)
     
     export_data(solved_boards, output_data_file)
-    print_metrics(solved_boards)
+    print_metrics(total_boards)
 
 
 
@@ -185,7 +186,7 @@ def export_data(solved_boards, output_data_file):
 
 
  
-
+    
 ## 5. Solver Helpers
 # =============================================================================
 
@@ -373,7 +374,7 @@ def return_time():
     return (end - start)
 
 
-def print_metrics(list_initial_clue_positions):
+def print_metrics(total_boards):
     time = return_time()
     time_per_board = time / total_boards
     
